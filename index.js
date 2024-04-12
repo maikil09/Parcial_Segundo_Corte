@@ -37,7 +37,36 @@ app.get('/users/:count', async (req, res) => {
 
   try {
     let users = [
-      // Lista de usuarios
+      { nombreCompleto: "Acero Garcia Samuel" },
+      { nombreCompleto: "Aljuri Martinez Darek" },
+      { nombreCompleto: "Cepeda Uribe Juan Felipe" },
+      { nombreCompleto: "Chaves Perez Ana Maria" },
+      { nombreCompleto: "Cruz Pavas Carlos David" },
+      { nombreCompleto: "Diaz Algarin Diego Norberto" },
+      { nombreCompleto: "Diaz Bernal Jorge Esteban" },
+      { nombreCompleto: "Diaz Vargas David Esteban" },
+      { nombreCompleto: "Forero Peña Juan Jose" },
+      { nombreCompleto: "Gutierrez De Piñeres Barbosa Santiago" },
+      { nombreCompleto: "Lopez Huertas Samuel Esteban" },
+      { nombreCompleto: "Medina Fernandez Michael Steven" },
+      { nombreCompleto: "Moreno Carvajal Katherin Juliana" },
+      { nombreCompleto: "Moreno Patarroyo Juan Pablo" },
+      { nombreCompleto: "Muñoz Sendoya Nicolas Esteban" },
+      { nombreCompleto: "Navarro Cuy Santiago" },
+      { nombreCompleto: "Parrado Morales Juan Pablo" },
+      { nombreCompleto: "Ramirez Chinchilla Daniel Santiago" },
+      { nombreCompleto: "Restrepo Coca Juan Pablo" },
+      { nombreCompleto: "Reyes Gonzalez Gabriela" },
+      { nombreCompleto: "Rodriguez Falla Juan Jose" },
+      { nombreCompleto: "Ruiz Torres Valentina" },
+      { nombreCompleto: "Salas Gutierrez Mariana" },
+      { nombreCompleto: "Sanchez Sandoval Sebastian" },
+      { nombreCompleto: "Sarmiento Guarnizo Josue David" },
+      { nombreCompleto: "Soler Prado Santiago" },
+      { nombreCompleto: "Tamayo Lopez Maria Fernanda" },
+      { nombreCompleto: "Urrea Lara Deivid Nicolas" },
+      { nombreCompleto: "Azcona Andrés" }
+
     ];
 
     // Ordenar usuarios
