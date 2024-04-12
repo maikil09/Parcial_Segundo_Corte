@@ -37,45 +37,20 @@ app.get('/users/:count', async (req, res) => {
 
   try {
     let users = [
-      { nombreCompleto: "Acero Garcia Samuel" },
-      { nombreCompleto: "Aljuri Martinez Darek" },
-      { nombreCompleto: "Cepeda Uribe Juan Felipe" },
-      { nombreCompleto: "Chaves Perez Ana Maria" },
-      { nombreCompleto: "Cruz Pavas Carlos David" },
-      { nombreCompleto: "Diaz Algarin Diego Norberto" },
-      { nombreCompleto: "Diaz Bernal Jorge Esteban" },
-      { nombreCompleto: "Diaz Vargas David Esteban" },
-      { nombreCompleto: "Forero Peña Juan Jose" },
-      { nombreCompleto: "Gutierrez De Piñeres Barbosa Santiago" },
-      { nombreCompleto: "Lopez Huertas Samuel Esteban" },
-      { nombreCompleto: "Medina Fernandez Michael Steven" },
-      { nombreCompleto: "Moreno Carvajal Katherin Juliana" },
-      { nombreCompleto: "Moreno Patarroyo Juan Pablo" },
-      { nombreCompleto: "Muñoz Sendoya Nicolas Esteban" },
-      { nombreCompleto: "Navarro Cuy Santiago" },
-      { nombreCompleto: "Parrado Morales Juan Pablo" },
-      { nombreCompleto: "Ramirez Chinchilla Daniel Santiago" },
-      { nombreCompleto: "Restrepo Coca Juan Pablo" },
-      { nombreCompleto: "Reyes Gonzalez Gabriela" },
-      { nombreCompleto: "Rodriguez Falla Juan Jose" },
-      { nombreCompleto: "Ruiz Torres Valentina" },
-      { nombreCompleto: "Salas Gutierrez Mariana" },
-      { nombreCompleto: "Sanchez Sandoval Sebastian" },
-      { nombreCompleto: "Sarmiento Guarnizo Josue David" },
-      { nombreCompleto: "Soler Prado Santiago" },
-      { nombreCompleto: "Tamayo Lopez Maria Fernanda" },
-      { nombreCompleto: "Urrea Lara Deivid Nicolas" },
-      { nombreCompleto: "Azcona Andrés" }
+      // Lista de usuarios
     ];
 
+    // Ordenar usuarios
     if (sort === 'DESC') {
       users.sort((a, b) => b.nombreCompleto.localeCompare(a.nombreCompleto));
     } else {
       users.sort((a, b) => a.nombreCompleto.localeCompare(b.nombreCompleto));
     }
 
+    // Limitar usuarios
     const limitedUsers = users.slice(0, parseInt(count, 10));
 
+    // Formatear usuarios
     const formattedUsers = limitedUsers.map(user => user.nombreCompleto).join('\n');
 
     res.send(formattedUsers);
@@ -87,21 +62,28 @@ app.get('/users/:count', async (req, res) => {
 
 // Nuevo endpoint para simular la creación de un usuario
 app.post('/users', (req, res) => {
-  const { name, lastName, email, city = 'Bogotá', country = 'Colombia' } = req.body;
+  try {
+    const { name, lastName, email, city = 'Bogotá', country = 'Colombia' } = req.body;
 
-  if (!nombre || !apellido || !correo) {
-    return res.status(400).json({ error: 'Faltan parámetros obligatorios' });
+    if (!name || !lastName || !email) {
+      return res.status(400).json({ error: 'Faltan parámetros obligatorios' });
+    }
+
+    const nuevoUsuario = {
+      name,
+      lastName,
+      email,
+      city,
+      country
+    };
+
+    // Aquí podrías realizar la lógica necesaria para crear el usuario en tu base de datos
+
+    res.status(201).json(nuevoUsuario);
+  } catch (error) {
+    console.error('Error al crear un usuario:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
   }
-
-  const nuevoUsuario = {
-    name,
-    lastName,
-    email,
-    city,
-    country
-  };
-
-  res.status(201).json(nuevoUsuario);
 });
 
 app.listen(PORT, () => {
