@@ -25,7 +25,7 @@ app.get('/coin/:coinName', async (req, res) => {
   }
 });
 
-// Ruta raíz para mostrar "Hola, soy Michael Medina"
+// Ruta raíz para mostrar "Hola, soy Michael"
 app.get('/', (req, res) => {
   res.send('Hola, soy Michael Medina');
 });
